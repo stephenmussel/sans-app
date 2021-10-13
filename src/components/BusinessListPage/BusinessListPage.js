@@ -17,6 +17,14 @@ function BusinessList() {
     <div>
       <h1>Business List Page</h1>
       <p>{JSON.stringify(businessList)}</p>
+      {businessList.map((each) => (
+        <div>
+          <img src={each.image_url} />
+          <h3>{each.name}</h3>
+          <p>{each.description}</p>
+        </div>
+
+      ))}
     </div>
   )
 }
