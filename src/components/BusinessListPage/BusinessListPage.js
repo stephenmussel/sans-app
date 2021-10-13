@@ -6,6 +6,7 @@ function BusinessList() {
 
   const dispatch = useDispatch();
   const businessList = useSelector(store => store.businessList);
+  const history = useHistory();
 
   useEffect(() => {
     console.log('in useEffect');
@@ -16,7 +17,7 @@ function BusinessList() {
 
   const viewBusinessDetails = () => {
     console.log('clicked on image');
-    
+    history.push('/businessDetails')
   }
 
   return(
