@@ -1,0 +1,14 @@
+## October 12
+
+[x] install dependencies
+[x] create DB and tables
+[x] populate DB w/test data
+
+## October 13
+
+[x] GET test data from DB
+[x] display list of businesses on DOM
+[] GET favorited business from DB
+[] display favorited businesses on favorite Page
+[] GET user data
+[] display user data on profile page

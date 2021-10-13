@@ -29,7 +29,12 @@ function Nav() {
             </Link>
 
             <Link className="navLink" to="/info">
-              Info Page
+              Info
+            </Link>
+
+            {/* NOTES: added link */}
+            <Link className="navLink" to="/businessList"> 
+              Zero-Proof
             </Link>
 
             <LogOutButton className="navLink" />
