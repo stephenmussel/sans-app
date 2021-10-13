@@ -3,7 +3,9 @@ import { takeLatest, put } from 'redux-saga/effects';
 
 function* fetchBusiness() {
     try {
-        console.log('fetchBusiness saga wired!');
+        yield console.log('fetchBusiness saga wired!');
+        const businessResponse = yield axios.get('/api/business');
+        yield put({type: 'SET_BUSINESS', payload: businessResponse.data});
         
     } catch(error) {
         console.log('error in fetchBusiness', error);   

@@ -1,8 +1,8 @@
-const businessReducer = (state = [], action) => {
+const businessList = (state = [], action) => {
     if(action.type === 'SET_BUSINESS') {
         return action.payload;
     }
     return state;
 }
 
-export default businessReducer;
+export default businessList;

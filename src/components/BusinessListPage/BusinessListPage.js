@@ -4,7 +4,7 @@ import {useDispatch, useSelector } from 'react-redux';
 function BusinessList() {
 
   const dispatch = useDispatch();
-  const businessList = useSelector(store => store.businessReducer);
+  const businessList = useSelector(store => store.businessList);
 
   useEffect(() => {
     console.log('in useEffect');
@@ -16,6 +16,7 @@ function BusinessList() {
   return(
     <div>
       <h1>Business List Page</h1>
+      <p>{JSON.stringify(businessList)}</p>
     </div>
   )
 }
