@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import BusinessListPage from '../BusinessListPage/BusinessListPage';
+import FavoriteListPage from '../FavoriteListPage/FavoriteListPage';
 
 import './App.css';
 
@@ -75,6 +76,14 @@ function App() {
             path="/businessList"
           >
             <BusinessListPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows FavoriteListPage else shows LoginPage
+            exact
+            path="/favoriteList"
+          >
+            <FavoriteListPage />
           </ProtectedRoute>
 
           <Route

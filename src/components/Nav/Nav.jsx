@@ -37,6 +37,11 @@ function Nav() {
               Zero-Proof
             </Link>
 
+            {/* NOTES: added link */}
+            <Link className="navLink" to="/favoriteList"> 
+              Favorites
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}
