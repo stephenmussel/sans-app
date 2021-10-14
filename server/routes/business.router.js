@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 // GET route for details of selected business
 router.get('/:id', (req, res) => {
   // console.log('in GET details');
-  // console.log('this is req.params.id: ', req.params.id);
+  console.log('this is req.params.id: ', req.params.id);
   const businessId = req.params.id;
   const queryText = `SELECT * FROM "business" WHERE "business"."id" = $1`;
   pool.query(queryText, [businessId])
@@ -36,6 +36,23 @@ router.get('/:id', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
+  const businessId = req.params.id;
+  const queryText = `INSERT INTO "favorite" ("business_id") VALUES ($1);`; // NOTES: how do i attach user_id to this?
+  pool.query(queryText, [businessId])
+  .then(result => {
+    res.sendStatus(201);
+  })
+  .catch(error => {
+    console.log('error adding businessId', error);
+    res.sendStatus(500);
+    
+  })
+});
+
+/**
+ * POST route template
+ */
+ router.post('/', (req, res) => {
   // POST route code here
 });
 
