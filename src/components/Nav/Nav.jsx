@@ -33,7 +33,7 @@ function Nav() {
             </Link>
 
             {/* NOTES: added link */}
-            <Link className="navLink" to="/list"> 
+            <Link className="navLink" to="/businessList"> 
               Zero-Proof
             </Link>
 

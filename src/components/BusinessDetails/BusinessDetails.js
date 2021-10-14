@@ -10,12 +10,14 @@ function BusinessDetails() {
     const businessId = allParams.id;
 
     useEffect(() => {
-        dispatchEvent({type: 'FETCH_DETAILS', payload: {id: businessId}});
+        dispatch({type: 'FETCH_DETAILS', payload: {id: businessId}});
     }, [businessId]);
 
     return(
         <div>
-            <h1>Details for Selected Business</h1>
+            <h1>Details for {businessDetails[0].name}</h1>
+            {/* {JSON.stringify(businessDetails)} */}
+            <p>{businessDetails[0].description}</p>
         </div>
     )
 }
