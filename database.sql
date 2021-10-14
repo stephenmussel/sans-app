@@ -9,6 +9,29 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
+CREATE TABLE "business" (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR (80),
+    "rating" VARCHAR (5),
+    "description" VARCHAR (255),
+    "address" VARCHAR (255),
+    "city" VARCHAR (20),
+    "state" VARCHAR (2),
+    "zip" INT,
+    "phone" VARCHAR (12),
+    "website" VARCHAR (55),
+    "favorite" BOOLEAN DEFAULT FALSE,
+    "notes" VARCHAR (255),
+    "image_url" VARCHAR (2083),
+    "user_id" INT REFERENCES "user"
+);
+
+CREATE TABLE "favorite"(
+    "id" SERIAL PRIMARY KEY,
+    "user_id" INT REFERENCES "user",
+    "business_id" INT REFERENCES "business" 
+);
+
 -- testing colita insert
 INSERT INTO "business" 
 	("name", "rating", "description", "address", "city", "state", "zip", "phone", "website", "favorite", "notes", "image_url", "user_id")
