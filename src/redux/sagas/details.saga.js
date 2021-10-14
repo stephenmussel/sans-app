@@ -3,9 +3,9 @@ import { takeLatest, put } from 'redux-saga/effects';
 
 function* fetchDetails(action) {
     try {
-        yield console.log('fetchDetails saga wired!');
-        // yield console.log(action);
-        yield console.log(action.payload);
+        // yield console.log('fetchDetails saga wired!');
+        yield console.log('this is action: ', action);
+        yield console.log('this is action.payload: ', action.payload);
         const business = action.payload;
         const businessDetails = yield axios.get(`/api/business/${business.id}`);
         console.log('this is businessDetails', businessDetails.data);
