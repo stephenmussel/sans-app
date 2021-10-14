@@ -11,7 +11,7 @@ function* fetchDetails() {
 }
 
 function* detailsSaga() {
-    yield takeLatest('SET_DETAILS', fetchDetails);
+    yield takeLatest('FETCH_DETAILS', fetchDetails);
 }
 
 export default detailsSaga;

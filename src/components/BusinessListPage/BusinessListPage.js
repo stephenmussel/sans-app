@@ -9,7 +9,7 @@ function BusinessList() {
   const history = useHistory();
 
   useEffect(() => {
-    console.log('in useEffect');
+    console.log('in useEffect, BusinessListPage');
     // fetches all businesses from business.saga
     const action = {type: 'FETCH_BUSINESS'};
     dispatch(action)
