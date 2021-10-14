@@ -10,25 +10,25 @@ function BusinessList() {
 
   useEffect(() => {
     console.log('in useEffect, BusinessListPage');
-    // fetches all businesses from business.saga
+    // fetches all businesses on page load
     const action = {type: 'FETCH_BUSINESS'};
     dispatch(action)
   }, []);
 
   const viewBusinessDetails = () => {
     console.log('clicked on image');
-    history.push('/businessDetails')
+    history.push('/details')
   }
 
   return(
     <div>
       <h1>Business List Page</h1>
       {/* <p>{JSON.stringify(businessList)}</p> */}
-      {businessList.map(each => {
+      {businessList.map(business => {
         return(
-          <div onClick={viewBusinessDetails} key={each.id}>
-            <img src={each.image_url} />
-            <h3>{each.name}</h3>
+          <div onClick={viewBusinessDetails} key={business.id}>
+            <img src={business.image_url} />
+            <h3>{business.name}</h3>
           </div>
         );
       })}

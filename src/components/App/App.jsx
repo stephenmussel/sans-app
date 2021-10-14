@@ -74,7 +74,7 @@ function App() {
           <ProtectedRoute
             // logged in shows BusinessListPage else shows LoginPage
             exact
-            path="/businessList"
+            path="/list"
           >
             <BusinessListPage />
           </ProtectedRoute>
@@ -82,7 +82,7 @@ function App() {
           <ProtectedRoute
             // logged in shows BusinessListPage else shows LoginPage
             exact
-            path="/businessDetails"
+            path="/detail/:id" // url for client side navigation
           >
             <BusinessDetails />
           </ProtectedRoute>
@@ -90,7 +90,7 @@ function App() {
           <ProtectedRoute
             // logged in shows FavoriteListPage else shows LoginPage
             exact
-            path="/favoriteList"
+            path="/favorites"
           >
             <FavoriteListPage />
           </ProtectedRoute>
@@ -103,7 +103,7 @@ function App() {
               // If the user is already logged in, 
               // redirect to the /user page
               // NOTES: changed from `to="/user"`and now redirects to Business List Page after login
-              <Redirect to="/businessList" />
+              <Redirect to="/list" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -118,7 +118,7 @@ function App() {
               // If the user is already logged in, 
               // redirect them to the /user page
               // NOTES: changed from `to="/user"`and now redirects to Business List Page after registration
-              <Redirect to="/businessList" /> 
+              <Redirect to="/list" /> 
               :
               // Otherwise, show the registration page
               <RegisterPage />

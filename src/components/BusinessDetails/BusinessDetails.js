@@ -1,42 +1,21 @@
-import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import businessSaga from '../../redux/sagas/business.saga';
+import { useEffect } from 'react';
+import { useParams } from 'react-router';
 
 function BusinessDetails() {
 
-    const[selectedBusiness, setSelectedBusiness] = useState({});
-    const details = useSelector(store => store.businessDetails);
-    const businessList = useSelector(store => store.businessList);
+    const businessDetails = useSelector(store => store.businessDetails);
     const dispatch = useDispatch();
-    const {id} = useParams();
-    
+    const allParams = useParams();
+    const businessId = allParams.id;
+
     useEffect(() => {
-        getBusinessInfo();
-      }, []);
-
-      const getBusinessInfo = () => {
-        console.log('in getBusinessInfo');
-        // fetches all details from details.saga
-        const action = {type: 'FETCH_DETAILS', payload: id};
-        dispatch(action);
-        whatBusiness();
-      }
-
-    const whatBusiness = () => {
-        businessList.map((each) => {
-            console.log(each.id);
-            if(`${each.id}` === id) {
-                return selectedBusiness(each)
-            }
-        })
-    }
+        dispatchEvent({type: 'FETCH_DETAILS', payload: {id: businessId}});
+    }, [businessId]);
 
     return(
         <div>
-            <h1>Details of Selected Business</h1>
-            <p>{JSON.stringify(details)}</p>
+            <h1>Details for Selected Business</h1>
         </div>
     )
 }
