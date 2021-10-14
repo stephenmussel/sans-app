@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+// import FavoriteListItem from "../FavoriteListItem/FavoriteListItem";
 
 function FavoriteList() {
 
     const dispatch = useDispatch();
-    const favoriteList = useSelector(store => store.businessList);
+    const favoriteList = useSelector(store => store.favoriteList);
     const history = useHistory();
 
     useEffect(() => {
@@ -16,7 +17,13 @@ function FavoriteList() {
     return(
         <div>
             <h1>Favorite List Page</h1>
-        {JSON.stringify(favoriteList)}
+            {JSON.stringify(favoriteList)}
+            {/* {favoriteList.map(favorite =>(
+                <FavoriteListItem 
+                    key={favorite.id}
+                    favorite={favorite}
+                />
+            ))} */}
         </div>
     )
 }

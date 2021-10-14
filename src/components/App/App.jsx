@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import BusinessListPage from '../BusinessListPage/BusinessListPage';
 import FavoriteListPage from '../FavoriteListPage/FavoriteListPage';
 import BusinessDetails from '../BusinessDetails/BusinessDetails';
+import NewBusinessForm from '../NewBusinessForm/NewBusinessForm';
 
 import './App.css';
 
@@ -93,6 +94,14 @@ function App() {
             path="/favorites"
           >
             <FavoriteListPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows FavoriteListPage else shows LoginPage
+            exact
+            path="/add"
+          >
+            <NewBusinessForm />
           </ProtectedRoute>
 
           <Route

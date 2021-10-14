@@ -42,6 +42,11 @@ function Nav() {
               Favorites
             </Link>
 
+            {/* NOTES: added link */}
+            <Link className="navLink" to="/add"> 
+              Add Business
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}

@@ -20,6 +20,10 @@ function BusinessList() {
     <div>
       <h1>Business List Page</h1>
       {/* <p>{JSON.stringify(businessList)}</p> */}
+      <div>
+        <button>Add Business</button>
+      </div>
+      <br />
       {businessList.map(business => (
         <BusinessListItem 
           key={business.id} 
