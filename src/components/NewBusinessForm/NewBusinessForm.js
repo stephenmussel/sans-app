@@ -1,7 +1,16 @@
+import { useState } from "react";
+
 const NewBusinessForm = () => {
 
-    const addBusiness = () => {
+    const [newBusiness, setBusiness] = useState(defaultBusiness);
+
+    let defaultBusiness = {
+        name: '',
+    }
+
+    function addBusiness(event) {
         console.log('clicked add button!');
+        event.preventDefault();
         
     }
 
