@@ -14,7 +14,10 @@ function* fetchBusiness() {
 
 function* postBusiness(action) {
     try {
-        console.log('postBusiness saga wired!');
+        yield console.log('postBusiness saga wired!');
+        const businessResponse = yield axios.post('/api/business');
+        yield put({type: 'SET_BUSINESS', payload: businessResponse.data});      
+
         
 
     } catch(error) {
