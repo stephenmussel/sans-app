@@ -35,8 +35,8 @@ router.get('/:id', (req, res) => {
   console.log(req.body);
   const newBusiness = req.body;
   const insertBusinessQuery = ` 
-  INSERT INTO "business" ("name", "rating", "description", "address", "city", "state", "zip")
-  VALUES ($1, $2, $3, $4, $5, $6, $7)
+  INSERT INTO "business" ("name", "rating", "description", "address", "city", "state", "zip", "phone", "website", "favorite", "notes")
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
   RETURNING "id";`
   const businessQueryValues = [
     newBusiness.name,
@@ -46,10 +46,10 @@ router.get('/:id', (req, res) => {
     newBusiness.city,
     newBusiness.state,
     newBusiness.zip,
-    // newBusiness.phone,
-    // newBusiness.website,
-    // newBusiness.favorite,
-    // newBusiness.notes,
+    newBusiness.phone,
+    newBusiness.website,
+    newBusiness.favorite,
+    newBusiness.notes,
   ]
   pool.query(insertBusinessQuery, businessQueryValues)
   .then(result => {

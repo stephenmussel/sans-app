@@ -16,9 +16,11 @@ const NewBusinessForm = () => {
         city: '',
         state: '',
         zip: '',
-        // website: '',
-        // favorite: '',
-        // notes: '',
+        phone: '',
+        website: '',
+        favorite: '',
+        notes: '',
+        image_url: 'images/sans_url_best.png',
     }
    
     // this is comes after defaultBusiness is defined!
@@ -45,10 +47,10 @@ const NewBusinessForm = () => {
                 <input type="text" placeholder="city" value={newBusiness.city} onChange={(event) => setBusiness({...newBusiness, city: event.target.value})}/>&nbsp;
                 <input type="text" placeholder="state" value={newBusiness.state} onChange={(event) => setBusiness({...newBusiness, state: event.target.value})}/>&nbsp;
                 <input type="text" placeholder="zip" value={newBusiness.zip} onChange={(event) => setBusiness({...newBusiness, zip: event.target.value})}/>&nbsp;
-                {/* <input type="text" placeholder="phone" value={newBusiness.phone} onChange={(event) => setBusiness({...newBusiness, phone: event.target.value})}/>&nbsp; */}
-                {/* <input type="text" placeholder="website" value={newBusiness.website} onChange={(event) => setBusiness({...newBusiness, website: event.target.value})}/>&nbsp; */}
-                {/* <input type="text" placeholder="favorite" value={newBusiness.favorite} onChange={(event) => setBusiness({...newBusiness, favorite: event.target.value})}/>&nbsp; */}
-                {/* <input type="text" placeholder="notes" value={newBusiness.notes} onChange={(event) => setBusiness({...newBusiness, notes: event.target.value})}/>&nbsp; */}
+                <input type="text" placeholder="phone" value={newBusiness.phone} onChange={(event) => setBusiness({...newBusiness, phone: event.target.value})}/>&nbsp;
+                <input type="text" placeholder="website" value={newBusiness.website} onChange={(event) => setBusiness({...newBusiness, website: event.target.value})}/>&nbsp;
+                <input type="text" placeholder="favorite" value={newBusiness.favorite} onChange={(event) => setBusiness({...newBusiness, favorite: event.target.value})}/>&nbsp;
+                <input type="text" placeholder="notes" value={newBusiness.notes} onChange={(event) => setBusiness({...newBusiness, notes: event.target.value})}/>&nbsp;
 
                 <input type="submit" value="Add"/>
             </form>
