@@ -33,11 +33,25 @@ router.get('/:id', (req, res) => {
 // POST route to add business
  router.post('/', (req, res) => {
   console.log(req.body);
+  const newBusiness = req.body;
   const insertBusinessQuery = ` 
-  INSERT INTO "business" ("name")
-  VALUES ($1)
+  INSERT INTO "business" ("name", "rating", "description", "address", "city", "state", "zip")
+  VALUES ($1, $2, $3, $4, $5, $6, $7)
   RETURNING "id";`
-  pool.query(insertBusinessQuery, [req.body.name])
+  const businessQueryValues = [
+    newBusiness.name,
+    newBusiness.rating,
+    newBusiness.description,
+    newBusiness.address,
+    newBusiness.city,
+    newBusiness.state,
+    newBusiness.zip,
+    // newBusiness.phone,
+    // newBusiness.website,
+    // newBusiness.favorite,
+    // newBusiness.notes,
+  ]
+  pool.query(insertBusinessQuery, businessQueryValues)
   .then(result => {
     console.log('new business id:', result.rows[0].id); // business ID
     const createBusinessId = result.rows[0].id
