@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 function FavoriteList() {
 
     const dispatch = useDispatch();
-    const favoriteList = useSelector(store => store.favoriteList);
+    const favoriteList = useSelector(store => store.favorite);
     const history = useHistory();
 
     useEffect(() => {

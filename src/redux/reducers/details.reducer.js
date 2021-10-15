@@ -1,8 +1,8 @@
-const businessDetails = (state = [], action) => {
+const details = (state = [], action) => {
     if(action.type === 'SET_DETAILS') {
         return action.payload;
     }
     return state;
 }
 
-export default businessDetails;
+export default details;

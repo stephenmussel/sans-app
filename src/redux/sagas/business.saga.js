@@ -15,10 +15,12 @@ function* fetchBusiness() {
 function* postBusiness(action) {
     try {
         yield console.log('postBusiness saga wired!');
-        const businessResponse = yield axios.post('/api/business');
-        yield put({type: 'SET_BUSINESS', payload: businessResponse.data});      
-
-        
+        yield console.log('action from postBusiness', action);
+        yield axios.post('/api/business', action.payload);        
+        yield put({type: 'SET_BUSINESS', payload: business.data}); 
+        yield console.log(businessList);
+            
+        yield put ({type: 'FETCH_BUSINESS'});
 
     } catch(error) {
         console.log('error in postBusiness', error);

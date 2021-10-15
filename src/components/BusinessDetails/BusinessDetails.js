@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router';
 
 function BusinessDetails() {
 
-    const businessDetails = useSelector(store => store.businessDetails);
+    const businessDetails = useSelector(store => store.details);
     const allParams = useParams();
     const businessId = allParams.id;
     const dispatch = useDispatch();

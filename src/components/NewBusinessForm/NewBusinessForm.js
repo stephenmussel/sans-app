@@ -22,7 +22,7 @@ const NewBusinessForm = () => {
         const action = {type: 'POST_BUSINESS', payload: newBusiness};        
         dispatch(action);
         setBusiness(defaultBusiness);
-        // history.push('/businessList')
+        history.push('/businessList')
         
     }
 

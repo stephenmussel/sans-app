@@ -6,7 +6,7 @@ import BusinessListItem from '../BusinessListItem/BusinessListItem';
 function BusinessList() {
 
   const dispatch = useDispatch();
-  const businessList = useSelector(store => store.businessList);
+  const businessList = useSelector(store => store.business);
   const history = useHistory();
 
   useEffect(() => {

@@ -30,6 +30,24 @@ router.get('/:id', (req, res) => {
     })
 });
 
+// POST route to add business
+ router.post('/', (req, res) => {
+  console.log(req.body);
+  const insertBusinessQuery = ` 
+  INSERT INTO "business" ("name")
+  VALUES ($1)
+  RETURNING "id";`
+  pool.query(insertBusinessQuery, [req.body.name])
+  .then(result => {
+    console.log('new business id:', result.rows[0].id); // business ID
+    const createBusinessId = result.rows[0].id
+  }).catch(error => {
+    console.log('POST /business', error);
+    res.sendStatus(500)
+  })
+});
+
+
 /**
  * POST route template
  */

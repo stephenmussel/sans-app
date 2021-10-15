@@ -1,4 +1,4 @@
-const favoriteList = (state = [], action) => {
+const favorite = (state = [], action) => {
     switch (action.type) {
         case 'ADD_FAVORITE':
             return [...state, action.payload]
@@ -9,4 +9,4 @@ const favoriteList = (state = [], action) => {
     }
 }
 
-export default favoriteList;
+export default favorite;
