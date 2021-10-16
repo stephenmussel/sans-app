@@ -74,7 +74,6 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('error in DELETE /business', error);
     res.sendStatus(500);
   })
-  
 })
 
 
