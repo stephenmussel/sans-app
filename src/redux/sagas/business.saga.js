@@ -26,6 +26,7 @@ function* postBusiness(action) {
     }
 }
 
+// DELETEs business added by logged in user
 function* deleteBusiness(action) {
     try {
         yield console.log('deleteBusiness wired!');

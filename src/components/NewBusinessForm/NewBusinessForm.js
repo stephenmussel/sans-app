@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import businessSaga from "../../redux/sagas/business.saga";
 
 const NewBusinessForm = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const businessItem = useSelector(store => store.business);
 
     let defaultBusiness = {
         name: '',
@@ -26,14 +27,17 @@ const NewBusinessForm = () => {
     // this is comes after defaultBusiness is defined!
     const [newBusiness, setBusiness] = useState(defaultBusiness);
 
-
     const addBusiness = (event) => {
         // console.log('clicked add button!');        
         event.preventDefault();
         const action = {type: 'POST_BUSINESS', payload: newBusiness};        
         dispatch(action);
-        setBusiness(defaultBusiness);
-        
+        setBusiness(defaultBusiness); 
+    }
+
+    const deleteBusiness = (event) => {
+        console.log('clicked deleteBusiness button!');
+        dispatch({type: 'DELETE_BUSINESS', payload: event.target.value})
     }
 
     return(
@@ -54,6 +58,14 @@ const NewBusinessForm = () => {
 
                 <input type="submit" value="Add"/>
             </form>
+            {businessItem.map((each) => (
+                <div key={each.id}>
+                    <img src={each.item_url}/>
+                    <p>{each.name}</p>
+                    <button value={each.id} onClick={(event) => deleteBusiness(event)}>Delete</button>
+                </div>
+            ))}
+
         </div>
     )
 }
