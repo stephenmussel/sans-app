@@ -1,11 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 // returns all businesses
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "business" ORDER by "name" ASC;`;
-  pool.query(queryText)
+  const getQuery = `SELECT * FROM "business" ORDER by "name" ASC;`;
+  pool.query(getQuery)
   .then(result => {
       res.send(result.rows)
   }).catch(error => {
@@ -18,8 +19,8 @@ router.get('/:id', (req, res) => {
   // console.log('in GET details');
   // console.log('this is req.params.id: ', req.params.id);
   const businessId = req.params.id;
-  const queryText = `SELECT * FROM "business" WHERE "business"."id" = $1`;
-  pool.query(queryText, [businessId])
+  const detailQuery = `SELECT * FROM "business" WHERE "business"."id" = $1`;
+  pool.query(detailQuery, [businessId])
     .then(result => {
       // console.log(result);
       res.send(result.rows[0]);
@@ -34,11 +35,11 @@ router.get('/:id', (req, res) => {
  router.post('/', (req, res) => {
   console.log(req.body);
   const newBusiness = req.body;
-  const insertBusinessQuery = ` 
+  const insertQuery = ` 
   INSERT INTO "business" ("name", "rating", "description", "address", "city", "state", "zip", "phone", "website", "favorite", "notes")
   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
   RETURNING "id";`
-  const businessQueryValues = [
+  const queryValues = [
     newBusiness.name,
     newBusiness.rating,
     newBusiness.description,
@@ -51,7 +52,7 @@ router.get('/:id', (req, res) => {
     newBusiness.favorite,
     newBusiness.notes,
   ]
-  pool.query(insertBusinessQuery, businessQueryValues)
+  pool.query(insertQuery, queryValues)
   .then(result => {
     console.log('new business id:', result.rows[0].id); // business ID
     const createBusinessId = result.rows[0].id
@@ -60,6 +61,21 @@ router.get('/:id', (req, res) => {
     res.sendStatus(500)
   })
 });
+
+// delete business that logged in user added
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('this is req.params.id: ', req.params.id);
+  const businessId = req.params.id;
+  const deleteQuery = `DELETE FROM "business" WHERE "id" = $1 AND "user_id" = $2;`;
+  pool.query(deleteQuery, [businessId, req.user.id])
+  .then(result => {
+    res.sendStatus(201);
+  }).catch(error => {
+    console.log('error in DELETE /business', error);
+    res.sendStatus(500);
+  })
+  
+})
 
 
 /**
